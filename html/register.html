@@ -1,0 +1,144 @@
+<!-- register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <style>
+       body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('../public/img/back.gif'); /* 替换为你自己的背景图片路径 */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #fff; /* 设置文本颜色为白色以适应背景 */
+     background-color: rgba(0, 0, 0, 0); /* 设置黑色半透明背景 */
+}
+
+
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color:  #FF99FF;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #007bff;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 16px;
+            color: #979790;
+            font-family: 'Times New Roman', serif; /* 设置英文字体 */
+
+        }
+
+        a {
+            color: #6196d2;
+            text-decoration: none;
+
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+         .chinese-text {
+             font-family: '楷体_GB2312', 'KaiTi', sans-serif; /* 设置中文字体，根据实际情况选择 */
+        }
+    </style>
+</head>
+<body>
+<h1>Register</h1>
+    <form id="registerForm">
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+        <br>
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+        <br>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="button" onclick="register()">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="/login" class="chinese-text"> 用户名与密码登录</a></p>
+    <p>Already have an account? <a href="/email" class="chinese-text">邮箱验证登录</a></p>
+
+    <script>
+        function register() {
+            // ... 注册逻辑
+           const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const formData = new URLSearchParams();
+            formData.append("newUsername",newUsername);
+            formData.append("newPassword",newPassword);
+            formData.append("phone",phone);
+            formData.append("email",email);
+
+            fetch('http://127.0.0.1:8000/api/reguser', {
+                method: 'POST',
+                headers: {
+                     'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 处理注册成功的情况
+                console.log(data);
+                alert("注册成功");
+            })
+            .catch(error => {
+                // 处理注册失败的情况
+                console.error(error);
+            });
+        }
+    </script>
+</body>
+</html>

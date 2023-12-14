@@ -1,0 +1,63 @@
+ body {
+            background-image: url("../img/dream8.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+            .navbar {
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333; /* Change the color as needed */
+        }
+
+        .navbar-nav .nav-link {
+            color: #333; /* Change the color as needed */
+        }
+
+        .navbar-toggler-icon {
+            background-color: #333; /* Change the color as needed */
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.5); /* 设置半透明背景 */
+            transition: all 0.2s linear;
+            /*opacity: 0.8;*/
+        }
+
+
+
+        .card:hover {
+            transform: scale(1.08);
+            transition: all 0.2s linear;
+        }
+
+        .product {
+            margin-bottom: 20px;
+
+        }
+
+        .product img {
+            height: 600px;
+            object-fit: cover;
+        }
+        .custom-modal-bg{
+            background-image: url("../img/motai.jpg");
+            color: #cfcfcf;
+        }
+
+        footer {
+
+    background-image: url("../img/footer_dream.jpg");
+            color: #fff; /* 文字颜色 */
+            padding: 10px; /* 内边距 */
+            text-align: center; /* 文字居中 */
+            position: relative; /* 固定在底部 */
+            width: 100%; /* 横向占满整个屏幕 */
+            bottom: 0; /* 距离底部为0 */
+            height: 60px;
+        }

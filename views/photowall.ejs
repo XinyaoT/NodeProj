@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Photo Wall 📷</title>
+  <link rel="stylesheet" href="../public/css/photowall.css">
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<nav class="navbar">
+    <a href="./about">About</a>
+    <a href="./index">Index</a>
+</nav>
+  <div class="gallery">
+    <div class="photo-panel" style="background-image: url('../public/img/IMG_20210718_115856_mh1626599884323.jpg');">
+      <p>Hey</p>
+      <p>Let's</p>
+      <p>Dance</p>
+    </div>
+    <div class="photo-panel" style="background-image: url('../public/img/IMG_20230730_110336.jpg');">
+      <p>Give</p>
+      <p>Take</p>
+      <p>Receive</p>
+    </div>
+       <div class="photo-panel" style="background-image: url('../public/img/IMG_20210718_115859_mh1626600206102.jpg');">
+      <p>Give</p>
+      <p>A</p>
+      <p>Receive</p>
+    </div>
+       <div class="photo-panel" style="background-image: url('../public/img/mmexport1665638914517.jpg');">
+      <p>Give</p>
+      <p>Look</p>
+      <p>Receive</p>
+    </div>
+       <div class="photo-panel" style="background-image: url('../public/img/mmexport1665638909421.jpg');">
+      <p>Give</p>
+      <p>For</p>
+      <p>Receive</p>
+    </div>
+       <div class="photo-panel" style="background-image: url('../public/img/IMG_20230204_124133.jpg');">
+      <p>Give</p>
+      <p>My</p>
+      <p>Receive</p>
+    </div>
+       <div class="photo-panel" style="background-image: url('../public/img/IMG_20220807_165503_mh1659881643795.jpg');">
+      <p>Give</p>
+      <p>Lovely</p>
+      <p>Receive</p>
+    </div>
+       <div class="photo-panel" style="background-image: url('../public/img/IMG_20230119_213148.jpg');">
+      <p>Give</p>
+      <p>Pets</p>
+      <p>Receive</p>
+    </div>
+       <div class="photo-panel" style="background-image: url('../public/img/IMG_20230802_144123.jpg');">
+      <p>Give</p>
+      <p>!</p>
+      <p>Receive</p>
+    </div>
+    <!-- Add more panels as needed -->
+  </div>
+
+  <script>
+    const panels = document.querySelectorAll('.photo-panel');
+
+    function toggleOpen() {
+      this.classList.toggle('open');
+    }
+
+    function toggleActive(e) {
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }
+
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!-- <link rel="stylesheet" href="../public/css/photowall.css">-->
+<!--    <title>Photo Wall</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="gallery">-->
+<!--    <img src="../public/img/IMG_20210718_115856_mh1626599884323.jpg" alt="Cat 1">-->
+<!--    <img src="../public/img/IMG_20210718_115859_mh1626600206102.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/IMG_20210718_120750_mh1626600101169.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/IMG_20210718_120820_mh1626600318517.jpg" alt="Cat 2">-->
+
+<!--    <img src="../public/img/IMG_20220807_164832.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/IMG_20220807_165503_mh1659881643795.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/IMG_20220923_142635.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/IMG_20230119_213148.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/IMG_20230204_124129.jpg" alt="Cat 2">-->
+<!--     <img src="../public/img/IMG_20230204_124133.jpg" alt="Cat 1">-->
+<!--    <img src="../public/img/IMG_20230727_091418.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/IMG_20230729_115725.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/IMG_20230730_110336.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/IMG_20230802_144123.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/meishi.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/mmexport1625664775000.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/mmexport1665638909421.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/mmexport1665638914517.jpg" alt="Cat 2">-->
+<!--    <img src="../public/img/mmexport1675605142429.jpg" alt="Cat 2">-->
+
+<!--</div>-->
+
+<!--<div class="modal">-->
+<!--    <span class="modal-close" onclick="closeModal()">&times;</span>-->
+<!--    <img id="modal-img" src="" alt="Enlarged Image">-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    const gallery = document.querySelector('.gallery');-->
+<!--    const modal = document.querySelector('.modal');-->
+<!--    const modalImg = document.getElementById('modal-img');-->
+
+<!--    // Open modal with clicked image-->
+<!--    function openModal(imgSrc) {-->
+<!--        modalImg.src = imgSrc;-->
+<!--        modal.classList.add('active');-->
+<!--    }-->
+
+<!--    // Close modal-->
+<!--    function closeModal() {-->
+<!--        modal.classList.remove('active');-->
+<!--    }-->
+
+<!--    // Add click event to each image-->
+<!--    const images = document.querySelectorAll('.gallery img');-->
+<!--    images.forEach(image => {-->
+<!--        image.addEventListener('click', () => {-->
+<!--            openModal(image.src);-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../public/css/index.css">
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+        <div class="home">
+            <div class="content">
+            <div class="stars"></div>
+             <img class="bgc" src="../public/img/back_index5.jpg" width="100%" alt="">
+            <h1 class="title">欢迎来到我的个人网站</h1>
+            <h3 class="titles" id="typing-text">每一次点击都是一扇通向未知的门，一段光阴的散步。这是一个充满温暖和梦幻的天地，让你远离尘嚣，感受生命的美好。与博主一同漫游，或许你会在这个诗意的世界里找到属于自己的心灵驿站。</h3>
+            <img class="icon" src="../public/img/back_index5.jpg" alt="">
+             <div   class='ribbon'>
+                <a href='./index'><span>Home</span></a>
+                <a href='./about'><span>About</span></a>
+                <a href='./photowall'><span>photo</span></a>
+                 <a href='./shop'><span>Shop</span></a>
+
+            </div>
+
+             <div  class='nav'>
+                <span id="username"> 用户名:  <%= user.user_name %></span>
+                <span id="email">邮箱: <%= user.user_email %></span>
+                <span id="phone">电话: <%= user.user_phone %></span>
+                 <button id="showNavButton">显示/隐藏</button>
+            </div>
+
+        </div>
+        </div>
+        <div class="icons">
+            <div class="stars"></div>
+                <div class="icons_items">
+                    <img class="icons_items_imgs"   src="../public/img/back.jpeg" alt="">
+                    <span>童年的缤纷画卷</span>
+                </div>
+                <div class="icons_items">
+                    <img class="icons_items_imgs" src="../public/img/back1.jpeg" alt="">
+                    <span >心灵的成长之旅</span>
+                </div>
+                <div class="icons_items">
+                    <img class="icons_items_imgs" src="../public/img/img.png" alt="">
+                    <span>魔法与现实的交汇</span>
+                </div>
+                <div class="icons_items">
+                    <img class="icons_items_imgs" src="../public/img/img1.jpeg" alt="">
+                    <span>诗意的童话星空</span>
+                </div>
+            </div>
+        <div class="introduce">
+
+                <div class="introduce_item">
+                    <img class="introduce_item_img" src="../public/img/back5.png" alt="">
+
+                    <span class="introduce_item_title">
+                        每个童话故事都蕴含着深刻的智慧隐喻，犹如书页间散发的香气。这些智慧的种子在童话的土壤中生根发芽，逐渐长成参天大树。<br><br>
+                        在童话世界里，时间悠然，每一帧都是缤纷的色彩。童年的画卷上描绘着奇妙的冒险，梦幻的精灵，在阳光下跳动的欢笑如同绚烂的斑斓。<br><br>
+                        这是一个充满想象力和童心的世界，是心灵栖息的乐园
+                    </span>
+
+                </div>
+                <div class="introduce_item">
+
+                    <span class="introduce_item_titles">童话故事是一场心灵的成长之旅，主人公在这奇幻的世界中历经考验，逐渐领悟着人生的真谛。每一个神奇的角色、每一次奇迹的发生，都是一堂深刻的生命课程。
+                        <br><br>在童话的镜头下，我们思考着成长的意义，追寻着内心的勇气。
+                    </span>
+                    <img class="introduce_item_img" src="../public/img/back3.jpeg" alt="">
+                </div>
+                <div class="introduce_item">
+                    <img class="introduce_item_img" src="../public/img/back4.jpeg" alt="">
+                    <span class="introduce_item_title">童话中魔法的存在让人陶醉，但它与现实世界的交汇更显珍贵。在童话的边界，我们发现魔法并非遥不可及，而是融入日常的美好瞬间。每一次阳光透过树叶的缝隙、每一片雪花的轻舞，都是魔法的呈现，唤起心中对奇迹的渴望。</span>
+                </div>
+                <div class="introduce_item">
+                    <span class="introduce_item_titles">仰望童话星空，繁星点缀在夜空中，如同思绪的碎片。<br><br>
+                       每一颗星星都是一个梦想，一个未知的冒险。在这星空下，我们思考着人生的意义，追随着远方的光芒。<br><br>
+                        童话星空是一本寄托希望的诗集，为生命的旅途注入了诗意的温暖。
+                    </span>
+                    <img class="introduce_item_img" src="../public/img/back6.png" alt="">
+                </div>
+            </div>
+        <!-- 页脚 -->
+        <footer>
+            <p>&copy; 2023 Xinyao Tang. All Rights Reserved.</p>
+            <br>
+            <p>For inquiries, contact: <a href="mailto:1255432396@qq.com">1255432396@qq.com</a></p>
+        </footer>
+
+
+
+
+
+
+<script>
+
+       // 获取 nav 元素
+   const nav = document.querySelector('.nav');
+
+   // 获取触发显示的元素，假设是一个按钮
+   const showButton = document.getElementById('showNavButton');
+
+   // 添加点击事件监听器
+   showButton.addEventListener('click', () => {
+       nav.classList.toggle('show');
+   });
+//打字特效
+    function playTypingEffect() {
+        var textElement = document.getElementById('typing-text');
+        var text = textElement.innerText;
+        var index = 0;
+
+        textElement.innerText = '';
+
+        var typingInterval = setInterval(function() {
+            textElement.innerText += text[index];
+            index++;
+
+            if (index === text.length) {
+                clearInterval(typingInterval);
+                // 打字完成后延迟一段时间再重新播放
+                setTimeout(function() {
+                    playTypingEffect();
+                }, 1000); // 这里设置了 1000 毫秒的延迟，你可以根据需要调整
+            }
+        }, 100);
+    }
+
+    // 初始播放
+    playTypingEffect();
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!--废弃变成login2.html-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+       body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('../public/img/back.gif'); /* 替换为你自己的背景图片路径 */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #fff; /* 设置文本颜色为白色以适应背景 */
+     background-color: rgba(0, 0, 0, 0); /* 设置黑色半透明背景 */
+}
+
+
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color:  #FF99FF;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #007bff;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 16px;
+            color: #979790;
+            font-family: 'Times New Roman', serif; /* 设置英文字体 */
+        }
+
+        a {
+            color: #6196d2;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<!-- 在你的 HTML 中添加一个容器元素 -->
+<div id="htmlContainer">
+    <h1>Login</h1>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="button" onclick="login()" >Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="/">Register here</a></p>
+</div>
+    <script>
+
+            // 监听 beforeunload 事件
+        window.addEventListener('beforeunload', (event) => {
+            // 获取当前页面的路径
+            const currentPath = window.location.pathname;
+
+            // 如果当前路径是 '/index'，则执行回退操作
+            if (currentPath === '/index') {
+                // 阻止默认的提示框
+                event.preventDefault();
+
+                // 执行回退操作
+                history.back();
+            }
+        });
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const formData = new URLSearchParams();
+            formData.append('username', username);
+            formData.append('password', password);
+
+            fetch('http://127.0.0.1:8000/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formData,
+            })
+             .then(response => response.json())
+            .then(data => {
+                console.log("login",data);
+                // 检查登录是否成功，这里假设服务器返回一个 success 字段表示成功
+                if (data.message == "登陆成功") {
+                    alert("登陆成功！")
+                   const jwtToken = data.token; // 假设服务器返回 token 字段
+                    console.log("login",jwtToken)
+                    localStorage.setItem('jwtToken', jwtToken);
+
+                    /// 发送带有 Token 的请求到 /index
+                    axios.get('http://127.0.0.1:8000/api/index', {
+                        headers: {
+                            'Authorization': `${jwtToken}`,
+                        },
+                    })
+                    .then(indexResponse => {
+                        console.log(indexResponse.data);
+                        // 创建一个新的文档
+                        const newDocument = document.open('text/html', 'replace');
+
+                        // 将服务器返回的 HTML 写入新文档
+                        newDocument.write(indexResponse.data);
+
+                        // 关闭文档流
+                        newDocument.close();
+                         // 更新浏览器历史记录
+                        history.pushState({}, null, '/index');
+                    })
+                    .catch(indexError => {
+                        console.error(indexError);
+                    });
+                                    }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        }
+    </script>
+</body>
+</html>

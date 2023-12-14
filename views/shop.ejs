@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Showcase</title>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" >
+
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">-->
+     <link rel="stylesheet" href="../public/css/shop.css">
+<!--<link rel="stylesheet" href="../public/css/bootstrap.min.css">-->
+    <!-- particles.js library -->
+<script src="../public/js/click.js"></script>
+
+</head>
+<body onclick="clickEffect()">
+
+
+
+<div class="container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Shop For Dreams</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="./index">Index</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./photowall">Photo Wall</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+    <h2 class="col-lg-4 offset-4 mb-4">Product Showcase</h2>
+<!--商品展示-->
+    <div class="row">
+        <div class="col-lg-4 col-md-6 product">
+            <div class="card">
+                <img src="../public/img/dream1.jpeg" class="card-img-top" alt="Product Image">
+
+                    <div class="card-body">
+                    <h5 class="card-title">Product 1：梦幻星空之旅</h5>
+                    <p class="card-text">这款产品将带你踏上一场梦幻星空之旅。在夜晚，星空璀璨，如梦似幻。</p>
+<!--                    <a href="#" class="btn btn-primary"  onclick="showAlert()">Buy Now</a>-->
+                 <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">Buy Now</a>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 product">
+            <div class="card">
+                <img src="../public/img/dream2.jpeg" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">Product 2：时光穿越沙漠</h5>
+                    <p class="card-text"> 为你打开一扇穿越时间之门，时光穿越沙漠，你将发现沙漠深处的秘密和寂静。</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">Buy Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 product">
+            <div class="card">
+                <img src="../public/img/dream3.jpg" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">Product 3：奇幻植物园之旅 </h5>
+                    <p class="card-text">这是一次奇幻植物园之旅，你将探索充满魔法和奇迹的植物世界。</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">Buy Now</a>
+                </div>
+            </div>
+        </div>
+      <div class="col-lg-4 col-md-6 product">
+            <div class="card">
+                <img src="../public/img/dream4.jpg" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">Product 4：海底奇遇之旅</h5>
+                    <p class="card-text">这款产品将带你进行一场海底奇遇之旅，沉浸在蔚蓝的海洋深处，与五彩斑斓的珊瑚礁亲密接触。</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">Buy Now</a>
+                </div>
+            </div>
+        </div>
+      <div class="col-lg-4 col-md-6 product">
+            <div class="card">
+                <img src="../public/img/dream5.jpg" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">Product 5：音律之梦音乐会</h5>
+                    <p class="card-text">音律之梦音乐会将为你打开一扇音乐之门，带你进入梦幻的音乐世界，这是一场独特的音乐体验之旅。</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">Buy Now</a>
+                </div>
+            </div>
+        </div>
+      <div class="col-lg-4 col-md-6 product">
+            <div class="card">
+                <img src="../public/img/dream6.jpg" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">Product 6：空中热气球冒险</h5>
+                    <p class="card-text">这是一次空中热气球冒险，你将飘浮在蔚蓝的天空中，俯瞰大地的美丽，你将感受到一种飞翔的自由。</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalProduct">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Add more product cards as needed -->
+
+    </div>
+    <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="modalProduct1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content custom-modal-bg">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalProduct1Label">Dream Comes True</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> 在梦中我探索未知的地方，漫游在奇异的风景之中，发现自己的心灵的辽阔。</p>
+                <p>恭喜你为自己购买了一个梦想！</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- You can add additional buttons here if needed -->
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- 页脚 -->
+<footer>
+    <p>&copy; 2023 Xinyao Tang. All Rights Reserved.</p>
+</footer>
+<script>
+function showAlert() {
+  alert('恭喜你为自己购买了一个梦想！');
+}
+</script>
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>-->
+
+
+
+</body>
+</html>

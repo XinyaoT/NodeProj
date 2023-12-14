@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /*padding-top: 60px;*/
+    /*background: linear-gradient(to bottom left, #FDE8EF, #f1c5db, #efb7d2, #FAC8CF, #FDE8EF, #f1c5db,#FAC5CD, #F9B3BD);*/
+    margin: 0;
+    font-family: '楷体_GB2312', 'KaiTi', sans-serif;
+}
+.background_style1{
+     padding-top: 60px;
+    background: linear-gradient(to bottom left, #FDE8EF, #f1c5db, #efb7d2, #FAC8CF, #FDE8EF, #f1c5db,#FAC5CD, #F9B3BD);
+}
+.background_style2 {
+    padding-top: 60px;
+    background-image: url("../img/about_back.jpg");
+}
+.navbar {
+    background-color: #f89fad;
+    border-bottom: 2px solid #87516d; /* 添加底部边框线 */
+}
+.nav-item{
+    font-size: larger;
+}
+.carousel-item img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+.jumbotron{
+background:url("../img/about2.jpg");
+    height: 560px;
+}
+.navbar-brand {
+    font-family: '楷体_GB2312', 'KaiTi', sans-serif;
+    font-size: 1.8rem; /* 调整字体大小 */
+}
+
+.container {
+    margin-top: 20px; /* 调整顶部边距 */
+}
+
+.section-heading {
+    color: #ff69b4; /* 标题颜色 */
+}
+
+.text-muted {
+    color: #555; /* 柔和的灰色文本 */
+    font-size: large;
+}
+
+.img-fluid {
+    border-radius: 50%; /* 图片变为圆形 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加轻微阴影效果 */
+}
+
+footer {
+    background-image: url("../img/footer.jpg");
+    padding: 25px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff; /* 页脚文字颜色 */
+}
+#changeBackgroundBtn {
+    padding: 10px 20px; /* 设置按钮内边距 */
+    font-size: 16px; /* 设置字体大小 */
+    background-color: #f58496; /* 设置背景颜色 */
+    color: white; /* 设置文本颜色 */
+    border: none; /* 移除边框 */
+    border-radius: 5px; /* 设置边框圆角 */
+    cursor: pointer; /* 设置光标样式为手型 */
+       display: block;
+    margin: 0 auto;
+}
+
+#changeBackgroundBtn:hover {
+    background-color: #f4b1bd; /* 设置悬停时的背景颜色 */
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url("../public/img/back.gif");
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .flex{
+            display: flex;
+        }
+        form {
+            width: 900px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color:  #FF99FF;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            width: 120px;
+        }
+
+        button:hover {
+            background-color: #007bff;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 16px;
+            color: #979790;
+            font-family: 'Times New Roman', serif; /* 设置英文字体 */
+        }
+        a {
+            color: #6196d2;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Email Verification</h1>
+    <form id="verificationForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="verificationCode">Verification Code:</label>
+        <div class="flex">
+            <input type="text" id="verificationCode" name="verificationCode" required>
+            <button type="button" onclick="sendVerificationCode()">邮箱验证码</button>
+            <br>
+        </div>
+
+        <!-- Add an image tag for captcha -->
+        <div id="captchaImage"></div>
+        <label for="captcha">Captcha:</label>
+        <div class="flex">
+            <input type="text" id="captcha" name="captcha" required>
+            <button type="button" onclick="sendcaptcha()">图像验证码</button>
+        </div>
+
+        <br>
+        <button type="button" onclick="verifyCode()">验证登录</button>
+    </form>
+
+    <p>Don't have an account? <a href="/">Register here</a></p>
+
+    <script>
+        function sendVerificationCode() {
+            const email = document.getElementById('email').value;
+            console.log(email)
+            axios.get('http://127.0.0.1:8000/api/email', {
+                params: {
+                    email: email
+                }
+            })
+            .then(response => {
+                console.log(response.data);
+                if(response.data.code === 0)
+                {
+                    alert("已发送成功，注意查收邮件")
+                }
+                if(response.data.code === -1)
+                {
+                    alert("你还没有注册哦，先去注册吧")
+                }
+                // Handle the response (e.g., show a success message)
+            })
+            .catch(error => {
+                console.error(error);
+                // Handle the error (e.g., show an error message)
+            });
+        }
+         function sendcaptcha(){
+                fetch('http://127.0.0.1:8000/api/captcha', {
+                    method: 'GET',
+                    // headers: {
+                    //     'Content-Type': 'application/json',
+                    // },
+
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    const captchaImage = document.getElementById('captchaImage');
+                    captchaImage.innerHTML = data.data;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+            }
+        function verifyCode() {
+            const email = document.getElementById('email').value;
+            const verificationCode = document.getElementById('verificationCode').value;
+            const captcha =  document.getElementById('captcha').value;
+
+            // Make a request to the server to verify the code
+            // You need to implement the server-side verification logic
+
+            // For example:
+            axios.post('http://127.0.0.1:8000/api/user/save', {
+
+                verificationCode: verificationCode,
+                captcha:captcha,
+
+            })
+            .then(response => {
+                console.log(response.data);
+                if(response.data.code == 0){
+                     alert('登陆成功')
+                window.location.href='/api/index'
+                } if(response.data.code == -1){
+                     alert('验证码已过期')
+
+                }if(response.data.code == -2){
+                     alert('验证码错误')
+
+                }if(response.data.code == -3){
+                     alert('账户名不存在')
+
+                }
+
+
+                // Handle the response (e.g., show a success message)
+            })
+            .catch(error => {
+                console.error(error);
+                alert(error);
+                // Handle the error (e.g., show an error message)
+            });
+        }
+
+
+    </script>
+</body>
+</html>
